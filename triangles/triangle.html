@@ -1,0 +1,65 @@
+<!-- CS 425 Lab 1 
+Student Name: Hal Brynteson 
+Student NetID: hbrynt2 -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+
+<!-- VERTEX SHADER -->    
+<script id="vertex-shader" type="x-shader/x-vertex">
+
+//Attributes (inputs to the vert. shader)
+attribute vec4 vPosition;
+attribute vec4 vColor;
+
+
+//Varyings (outputs from the vert. shader)
+varying vec4 fColor;
+
+//Uniforms 
+uniform mat4 uTransMat; //4x4 transformation matrix
+
+
+void
+main()
+{
+
+    gl_Position = vPosition * uTransMat;
+
+    //gl_Position = vPosition;
+
+    fColor = vColor;
+
+}
+</script>
+
+<!-- FRAGMENT SHADER --> 
+<script id="fragment-shader" type="x-shader/x-fragment">
+
+precision mediump float;
+
+//Varyings (inputs to the frag. shader)
+varying vec4 fColor;
+
+//Uniforms
+
+void
+main()
+{                  
+    gl_FragColor = fColor;
+}
+</script>
+
+<script type="text/javascript" src="../Common/webgl-utils.js"></script>
+<script type="text/javascript" src="../Common/MV.js"></script>
+<script type="text/javascript" src="triangle.js"></script>
+</head>
+
+<body>
+<canvas id="gl-canvas" width="512" height="512">
+Oops ... your browser doesn't support the HTML5 canvas element
+</canvas>
+</body>
+</html>
